@@ -1,23 +1,15 @@
 <template>
   <div>
-    <div v-bind:key="item.id" v-for="item in ask">{{ item.title }}</div>
+    <div v-bind:key="item.id" v-for="item in this.$store.state.ask">
+      <div class="user">{{ item.title }}</div>
+    </div>
   </div>
 </template>
 
 <script>
-import { fetchAskList } from '@/api';
-
 export default {
-  data() {
-    return {
-      ask: []
-    }
-  },
   created() {
-    const vm = this;
-    fetchAskList()
-        .then(response => vm.ask = response.data)
-        .catch(error => console.log(error));
+    this.$store.dispatch('FETCH_ASK')
   }
 }
 </script>
