@@ -1,8 +1,11 @@
 <template>
   <div>
     <p v-for="item in getAsk" v-bind:key="item.id">
-      <a v-bind:href="item.url" target="_blank">{{ item.title }}</a>
-      <small>{{ item.time_ago }} by {{ item.user }}</small>
+      <router-link v-bind:to="`/item/${item.id}`">{{ item.title }}</router-link>
+      <small>
+        {{ item.time_ago }} by
+        <router-link v-bind:to="`/user/${item.user}`">{{ item.user }}</router-link>
+      </small>
     </p>
   </div>
 </template>
@@ -11,14 +14,14 @@
 import {mapGetters} from 'vuex'
 
 export default {
-  created() {
-    this.$store.dispatch('FETCH_ASK')
-  },
   computed: {
     ...mapGetters([
       'getAsk'
     ])
-  }
+  },
+  created() {
+    this.$store.dispatch('FETCH_ASK')
+  },
 }
 </script>
 

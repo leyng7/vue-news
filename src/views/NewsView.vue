@@ -14,14 +14,14 @@
 import {mapGetters} from "vuex";
 
 export default {
-  created() {
-    this.$store.dispatch('FETCH_NEWS')
-  },
   computed: {
     ...mapGetters([
       'getNews'
     ])
-  }
+  },
+  created() {
+    this.$store.dispatch('FETCH_NEWS')
+  },
 }
 </script>
 
