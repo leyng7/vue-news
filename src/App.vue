@@ -23,6 +23,16 @@ body {
   margin: 0;
 }
 
+a {
+  color: #34495e;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #42b883;
+  text-decoration: underline;
+}
+
 .page-enter-active, .page-leave-active {
   transition: opacity 0.5s ease;
 }
